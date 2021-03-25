@@ -1,0 +1,171 @@
+html {
+	background-color: #1d1f21;
+}
+
+hr {
+	border-top: 1px solid #DAE4ED;
+}
+
+body {
+	color: #c5c8c6;
+	width: 70%;
+	min-width: 800px;
+	max-width: 1500px;
+	margin: auto;
+
+	font-family: monospace;
+    font-size:1rem;
+    line-height:1.54;
+    letter-spacing:-.02em;
+}
+
+footer {
+	margin-top: 100px;
+}
+
+table {
+	border: none; border-collapse: collapse;
+}
+
+table td:first-child, table td:nth-child(4) {
+	border-left: none;
+}
+
+table .opinion-text {
+	display: none;
+	font-style: italic;
+}
+
+a, b {
+	color: #e0e0e0;
+}
+
+html.article {
+	line-height: 1.7;
+}
+
+a:hover {
+	cursor:pointer;
+}
+
+.navigation-links, .sub-links{
+	display: table;
+	width: 100%;
+  	table-layout: fixed;
+}
+
+.sub-links a {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-weight: bold;
+}
+
+.navigation-links a {
+	display: table-cell;
+	text-align: center;
+	text-decoration: none;
+	color: #616161;
+	font-size: 25px;
+	font-weight: 500;
+}
+
+.sub-links a {
+	display: table-cell;
+	text-align: center;
+	text-decoration: none;
+	color: #616161;
+}
+
+.navigation-links a:onhover {
+	font-weight: bold;
+}
+
+.content-pane {
+	display: none;
+}
+
+body.post{
+	max-width: 1200px;
+}
+
+body.short-post{
+	max-width: 1000px;
+}
+
+body.post h2{
+	margin-top: 40px;
+}
+
+body.post h3{
+	margin-top: 20px;
+}
+
+#literature-table td, #movies-table td  {
+	padding: 0.5em;
+	padding-bottom: 40px;
+}
+
+#literature-table td:first-child {
+	width: 30%;
+	min-width: 300px;
+	vertical-align: top;
+}
+
+#coding-pane, #literature-pane, #about-pane{
+	margin-top: 27px;
+}
+
+#movies-table td:first-child {
+	width: 40%;
+	min-width: 430px;
+}
+
+#movies-table td:nth-child(2), #literature-table td:nth-child(2){
+	vertical-align: top;
+}
+
+#literature-table span, #movies-table span {
+	white-space: pre-line;
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#literature-table img, #movies-table img {
+	height: 145px;
+	width: 95px;
+}
+
+#coding-pane
+
+#coding-pane ul {
+	padding-left: 0px;
+}
+
+#coding-pane li {
+	margin-bottom: 10px;
+	list-style-type: '';
+}
+
+#security-sub-links {
+	margin-bottom: 25px;
+}
+
+#website-title {
+	text-align: center;
+	margin-bottom: 50px;
+	color: #616161;
+	text-decoration: none;
+}
+
+#coding-pane.content-pane {
+	margin-top: 10
+}
+
+#coding-pane.content-pane a {
+	text-decoration: none;
+
+}
+
+#coding-pane.content-pane a:hover {
+	text-decoration: underline;
+}

@@ -1,0 +1,833 @@
+<!--
+Thanks for taking a look at the source code. I developed this website myself. Maybe you like it, maybe you don't :)
+-->
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+	<link rel="stylesheet" href="css/base.css"></link>
+	<link rel="stylesheet" href="css/prism.css"></link>
+
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="js/prism.js"></script>
+</head>
+
+<body>
+	<h1 id="website-title"><a id=website-title href=index.html>slickb0i</a></h1>
+
+	<div class=navigation-links>
+		<a href="#coding" value=3>Articles</a>
+		<a href="#movies" value=2>Movies</a>
+		<a href="#literature" value=1>Books</a>
+		<a href="#about" value=4>About</a>
+	</div>
+	<hr>
+
+	<!--Literature pane-->
+
+	<!--
+	Example entry
+
+	<tr>
+		<td>
+			<img src=img/books/pic></img>
+			<span><b>title</b>
+				by author
+
+				genre
+				[123] pages
+
+			</span>
+
+		</td>
+		<td>description</td>
+	</tr>
+
+	-->
+
+	<div id=literature-pane class=content-pane>
+	<p>A list of novels that I enjoyed reading. Book descriptions are from <a href="https://www.goodreads.com">www.goodreads.com</a>.</p>
+
+	<table id="literature-table">
+		<tr>
+			<td>
+				<img src=img/books/notes-from-underground.jpg></img>
+				<span><b>Notes from the Underground</b>
+					by Fyodor Dostoevsky
+
+					Philisophical/Dark Fiction
+					136 pages
+
+				</span>
+
+			</td>
+			<td>Dostoevsky’s most revolutionary novel, Notes from Underground marks the dividing line between nineteenth- and twentieth-century fiction, and between the visions of self each century embodied. One of the most remarkable characters in literature, the unnamed narrator is a former official who has defiantly withdrawn into an underground existence. In complete retreat from society, he scrawls a passionate, obsessive, self-contradictory narrative that serves as a devastating attack on social utopianism and an assertion of man’s essentially irrational nature.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/studies-in-pessimism.jpg></img>
+				<span><b>Studies in Pessimism</b>
+					by Arthur Schopenhauer
+
+					Philosophy
+					76 pages
+
+				</span>
+
+			</td>
+			<td>But all this contributes to increase the measures of suffering in human life out of all proportion to its pleasures; and the pains of life are made much worse for man by the fact that death is something very real to him. The brute flies from death instinctively without really knowing what it is, and therefore without ever contemplating it in the way natural to a man, who has this prospect always before his eyes. So that even if only a few brutes die a natural death, and most of them live only just long enough to transmit their species, and then, if not earlier, become the prey of some other animal</td>
+		</tr>
+		<tr>
+			<td>
+				<a><img src=img/books/brothers-karamazov.jpg></img></a>
+				<span><b>The Brothers Karamazov</b>
+					by Fyodor Dostoevsky
+
+					Classic, Fiction
+					796 pages
+
+				</span>
+
+			</td>
+			<td>The Brothers Karamazov is a murder mystery, a courtroom drama, and an exploration of erotic rivalry in a series of triangular love affairs involving the “wicked and sentimental” Fyodor Pavlovich Karamazov and his three sons―the impulsive and sensual Dmitri; the coldly rational Ivan; and the healthy, red-cheeked young novice Alyosha. Through the gripping events of their story, Dostoevsky portrays the whole of Russian life, is social and spiritual striving, in what was both the golden age and a tragic turning point in Russian culture.</td>
+			<td style="display: none">I saved reading the Brothers Karamazov until my early twenties, believing that some of the concepts would pass over my head otherwise. I was probably right. At the time when I started reading Dostoevsky, I had a particular distain for religion. The years of forced Sunday service had slowly withered me down, and besides, I was about to enter university. What need did I have for religion? What role could it possibly have in my beliefs?
+
+			In its essence, the Brothers Karamazov is a debate. What is worth pursuing: spirituality, truth and reason, or earthly pleasures? Each of these positions is embodied by one of the Karamazovs, and their arguement is posited through their actions. Like in many of his other books, Dostoevsky masterfully creates these fictional characters, and each carries their own set of beliefs and afflictions. In the end, the reader can decide which life is better and whether Dostoevsky's own conclusions are justified.
+
+			Of course so much has already been said about this novel. My own experiences towards it are probably typical of many others (though I tried to limit my exposure to what others had to say while reading it). In the end, this novel allowed me to think about and question certain aspects of faith, a task that is necessary if one is ever able to obtain a certain degree of spirtual knowledge. </td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-stranger.jpg></img>
+				<span><b>The Stranger</b>
+					by Albert Camus
+
+					Philisophical Fiction
+					123 pages
+
+				</span>
+
+			</td>
+			<td>Through the story of an ordinary man unwittingly drawn into a senseless murder on an Algerian beach, Camus explored 			what he termed "the nakedness of man faced with the absurd.</td>
+			<td class=opinion-text>testtest<td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/brave-new-world.jpg></img>
+				<span><b>Brave New World</b>
+					by Aldous Huxley
+
+					Dystopian Fiction
+					288 pages
+
+				</span>
+
+			</td>
+			<td>Largely set in a futuristic World State of genetically modified citizens and an intelligence-based social 				hierarchy, the novel anticipates huge scientific developments in reproductive technology, sleep-learning, 				psychological manipulation, and classical conditioning that are combined to make a utopian society that goes 				challenged only by a single outsider.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/narcissus-and-goldmund.jpg></img>
+				<span><b>Narcissus and Goldmund</b>
+					by Hermann Hesse
+
+					Philisophical Fiction
+					320 pages
+
+				</span>
+
+			</td>
+			<td>Narcissus and Goldmund tells the story of two medieval men whose characters are diametrically opposite: Narcissus, 				an ascetic monk firm in his religious commitment, and Goldmund, a romantic youth hungry for knowledge and worldly 				experience. First published in 1930, the novel remains a moving and pointed exploration of the conflict between the 				life of the spirit and the life of the flesh. It is a theme that transcends all time. </td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/homage-to-catalonia.jpeg></img>
+				<span><b>Homage to Catalonia</b>
+					by George Orwell
+
+					Non-fiction
+					232 pages
+
+				</span>
+
+			</td>
+			<td>In 1936 Orwell travelled to Spain to report on the Civil War and instead joined the fight against the Fascists. This famous account describes the war and Orwell's own experiences.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-trial.jpeg></img>
+				<span><b>The Trial</b>
+					by Franz Kafka
+
+					Philisophical/Absurdist
+					Fiction
+					255 pages
+				</span>
+
+			</td>
+			<td>The Trial is the terrifying tale of Josef K., a respectable bank officer who is suddenly and inexplicably arrested 				and must defend himself against a charge about which he can get no information. Whether read as an existential tale, a 				parable, or a prophecy of the excesses of modern bureaucracy wedded to the madness of totalitarianism, The Trial has 				resonated with chilling truth for generations of readers.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-picture-of-dorian-gray.jpg></img>
+				<span><b>The Picture of Dorian Gray</b>
+					by Oscar Wilde
+
+					Philisophical/Dark
+					Fiction
+					367 pages
+				</span>
+
+			</td>
+			<td>Written in his distinctively dazzling manner, Oscar Wilde's story of a fashionable young man who sells his soul for eternal youth and beauty is the author's most popular work. The tale of Dorian Gray's moral disintegration caused a scandal when it first appeared in 1890, but though Wilde was attacked for the novel's corrupting influence, he responded that there is, in fact, "a terrible moral in Dorian Gray." Just a few years later, the book and the aesthetic/moral dilemma it presented became issues in the trials occasioned by Wilde's homosexual liaisons, which resulted in his imprisonment.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-demon.jpg></img>
+				<span><b>The Demon</b>
+					by Hubert Selby Jr.
+
+					Dark Fiction
+					312 pages
+
+				</span>
+
+			</td>
+			<td>Harry White is a man haunted by a satyr's lust and an obsessive need for sin and retribution. The more Harry 				succeeds -- a good marriage, a good corporate job -- the more desperate he becomes...</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-wall.jpg></img>
+				<span><b>The Wall</b>
+					by Jean Paul Sartre
+
+					Short Story
+					17 pages
+
+				</span>
+
+			</td>
+			<td>'The Wall' introduces three political prisoners on the night prior to their execution. Through the gaze of an 				impartial doctor--seemingly there for the men's solace--their mental descent is charted in exquisite, often harrowing 				detail. And as the morning draws inexorably closer, the men cross the psychological wall between life and death, long 				before the first shot rings out.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-plague.jpg></img>
+				<span><b>The Plague</b>
+					by Albert Camus
+
+					Philisophical/Absurdist
+					Fiction
+					308 pages
+				</span>
+
+			</td>
+			<td>A gripping tale of human unrelieved horror, of survival and resilience, and of the ways in which humankind 				confronts death, The Plague is at once a masterfully crafted novel, eloquently understated and epic in scope, and a 				parable of ageless moral resonance, profoundly relevant to our times. In Oran, a coastal town in North Africa, the 				plague begins as a series of portents, unheeded by the people. It gradually becomes a omnipresent reality, obliterating 			all traces of the past and driving its victims to almost unearthly extremes of suffering, madness, and compassion.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/girl-with-the-dragon-tattoo.jpg></img>
+				<span><b>The Girl with the</b>
+					<b>Dragon Tattoo</b>
+					by Stieg Larsson
+
+					Dark Fiction
+					465 pages
+				</span>
+
+			</td>
+			<td>A spellbinding amalgam of murder mystery, family saga, love story and financial intrigue.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/of-mice-and-men.jpeg></img>
+				<span><b>Of Mice and Men</b>
+					by John Steinbeck
+
+					Classic
+					103 pages
+
+				</span>
+
+			</td>
+			<td>The compelling story of two outsiders striving to find their place in an unforgiving world. Drifters in search of work, George and his simple-minded friend Lennie have nothing in the world except each other and a dream--a dream that one day they will have some land of their own.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/island-of-dr-moreau.jpeg></img>
+				<span><b>Island of Dr.Moreau</b>
+					by H.G. Wells
+
+					Horror
+					153 pages
+
+				</span>
+
+			</td>
+			<td>Ranked among the classic novels of the English language and the inspiration for several unforgettable movies, this early work of H. G. Wells was greeted in 1896 by howls of protest from reviewers, who found it horrifying and blasphemous. They wanted to know more about the wondrous possibilities of science shown in his first book, The Time Machine, not its potential for misuse and terror. In The Island of Dr. Moreau, a shipwrecked gentleman named Edward Prendick, stranded on a Pacific island lorded over by the notorious Dr. Moreau, confronts dark secrets, strange creatures, and a reason to run for his life.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/crime-and-punishment.jpeg></img>
+				<span><b>Crime and Punishment</b>
+					by Fyodor Dostoyevsky
+
+					Philisophical/Dark
+					Fiction
+					671 pages
+				</span>
+
+			</td>
+			<td>Raskolnikov, a destitute and desperate former student, wanders through the slums of St Petersburg and commits a random murder without remorse or regret. He imagines himself to be a great man, a Napoleon: acting for a higher purpose beyond conventional moral law. But as he embarks on a dangerous game of cat and mouse with a suspicious police investigator, Raskolnikov is pursued by the growing voice of his conscience and finds the noose of his own guilt tightening around his neck. Only Sonya, a downtrodden prostitute, can offer the chance of redemption.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-bell-jar.jpg></img>
+				<span><b>The Bell Jar</b>
+					by Sylvia Plath
+
+					Dark Fiction
+					244 pages
+
+				</span>
+
+			</td>
+			<td>Sylvia Plath's shocking, realistic, and intensely emotional novel about a woman falling into the grip of insanity. 				</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/last-exit-to-brooklyn.jpeg></img>
+				<span><b>Last exit to Brooklyn</b>
+					by Selby Hubert
+
+					Dark Fiction
+					290 pages
+
+				</span>
+
+			</td>
+			<td>Described by various reviewers as hellish and obscene, Last Exit to Brooklyn tells the stories of New Yorkers who at every turn confront the worst excesses in human nature. Yet there are moments of exquisite tenderness in these troubled lives. Georgette, the transvestite who falls in love with a callous hoodlum; Tralala, the conniving prostitute who plumbs the depths of sexual degradation; and Harry, the strike leader who hides his true desires behind a boorish masculinity, are unforgettable creations.</td>
+		</tr>
+		<tr>
+			<td>
+				<img src=img/books/the-doors-of-perception.jpg></img>
+				<span><b>The Doors of Perception</b>
+					by Aldous Huxley
+
+					Non-Fiction
+					63 pages
+
+				</span>
+
+			</td>
+			<td>The Doors of Perception is a philosophical essay, released as a book, by Aldous Huxley. First published in 1954, it 			details his experiences when taking mescaline. The book takes the form of Huxley's recollection of a mescaline trip 				that took place over the course of an afternoon in May 1953. </td>
+		</tr>
+	</table>
+
+	</div>
+
+
+
+
+	<!---- Movie Pane ---->
+	<div id=movies-pane class=content-pane>
+		<div id=movie-sub-links class=sub-links>
+			<a href="#movies-all">All</a>
+			<a href="#movies-drama">Drama | Thriller</a>
+			<a href="#movies-dark">Dark | Offbeat</a>
+			<a href="#movies-romance">Romance | Other</a>
+		</div>
+
+		<p>A list of movies that I enjoyed watching. Movie descriptions are from <a href="https://www.imdb.com">www.imdb.com</a>.</p>
+		<table id="movies-table">
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/the-battle-of-algiers.jpg></img>
+					<span><b>The Battle of Algiers (1966)</b>
+						directed by Gillo Pontecorvo
+
+						Drama, War
+						2h 1min
+
+					</span>
+
+				</td>
+				<td>In the 1950s, fear and violence escalate as the people of Algiers fight for independence from the French government. </td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/no-country-for-old-men.jpg></img>
+					<span><b>No Country for Old Men (2007)</b>
+						directed by Ethan Coen, Joel Coen
+
+						Crime, Drama, Thriller
+						2h 2min
+
+					</span>
+
+				</td>
+				<td>Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/force-majeure.jpg></img>
+					<span><b>Force Majeure (2014)</b>
+						directed by Ruben Östlund
+
+						Comedy, Drama
+						2h
+
+					</span>
+
+				</td>
+				<td>A family vacationing in the French Alps is confronted with a devastating avalanche.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/gaslight.jpg></img>
+					<span><b>Gaslight (1944)</b>
+						directed by George Cukor
+
+						Comedy, Drama, Film-Noir
+						1h 54min
+
+					</span>
+
+				</td>
+				<td>Years after her aunt was murdered in her home, a young woman moves back into the house with her new husband. However, he has a secret that he will do anything to protect, even if it means driving his wife insane.</td>
+			</tr>
+
+			<tr genre="dark">
+				<td>
+					<img src=img/movies/jin-roh.jpg></img>
+					<span><b>Jin-Roh: The Wolf Brigade (1999)</b>
+						directed by Hiroyuki Okiura
+
+						Animation, Drama, Fantasy
+						1h 42min
+
+					</span>
+
+				</td>
+				<td>A traumatized member of an elite para-military police force falls for the sister of a female terrorist courier who died in front of him on duty.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/parasite.jpg></img>
+					<span><b>Parasite (2019)</b>
+						directed by Bong Joon Ho
+
+						Comedy, Drama, Thriller
+						2h 12min
+
+					</span>
+
+				</td>
+				<td>A poor family, the Kims, con their way into becoming the servants of a rich family, the Parks. But their easy life gets complicated when their deception is threatened with exposure.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/1917.jpg ></img>
+					<span><b>1917 (2019)</b>
+						directed Sam Mendes
+
+						Drama, War
+						1h 59min
+
+					</span>
+
+				</td>
+				<td>April 6th, 1917. As a regiment assembles to wage war deep in enemy territory, two soldiers are assigned to race against time and deliver a message that will stop 1,600 men from walking straight into a deadly trap</td>
+			</tr>
+
+			<tr genre="romance">
+				<td>
+					<img src=img/movies/mariage-story.jpg ></img>
+					<span><b>Mariage Story (2019)</b>
+						directed Noah Baumbach
+
+						Comedy, Drama, Romance
+						2h 17min
+
+					</span>
+
+				</td>
+				<td>Noah Baumbach's incisive and compassionate look at a marriage breaking up and a family staying together.</td>
+			</tr>
+
+			<tr genre="romance">
+				<td>
+					<img src=img/movies/500-days-of-summer.jpg></img>
+					<span><b>500 Days of <br>Summer (2009)</b>
+						directed by Marc Webb
+
+						Comedy, Drama, Romance
+						1h 35min
+					</span>
+				</td>
+				<td> An offbeat romantic comedy about a woman who doesn't believe true love exists, and the young man who falls for her.</td>
+			</tr>
+
+			<tr genre="dark">
+				<td>
+					<img src=img/movies/dead-ringers.jpg></img>
+					<span><b>Dead Ringers (1988)</b>
+						directed David Cronenberg
+
+						Drama, Horror, Thriller
+						1h 56min
+
+					</span>
+				</td>
+				<td>Twin gynecologists take full advantage of the fact that nobody can tell them apart, until their relationship begins to deteriorate over a woman.</td>
+			</tr>
+
+			<tr genre="romance">
+				<td>
+					<img src=img/movies/lost-in-translation.jpg></img>
+					<span><b>Lost in Translation (2003)</b>
+						directed Sofia Coppola
+
+						Drama, Romance
+						1h 42min
+
+					</span>
+
+				</td>
+				<td>A faded movie star and a neglected young woman form an unlikely bond after crossing paths in Tokyo.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/the-prestige.jpg></img>
+					<span><b>The Prestige (2006)</b>
+						directed by Christopher Nolan
+
+						Drama , Mystery , Sci-Fi
+						2h 10min
+
+					</span>
+
+				</td>
+				<td>After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while 					sacrificing everything they have to outwit each other.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/girl-with-dragon-tattoo.jpeg></img>
+					<span><b>The Girl with the</b>
+					      <b>Dragon Tattoo (2011)</b>
+						directed by David Fincher
+
+						Crime , Drama , Mystery
+						2h 38min
+					</span>
+
+				</td>
+				<td>Journalist Mikael Blomkvist is aided in his search for a woman who has been missing for forty years by Lisbeth Salander, a young computer hacker.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/pulp-fiction.jpeg></img>
+					<span><b>Pulp Fiction (1994)</b>
+						directed by Quentin Tarantino
+
+						Crime , Drama
+						2h 34min
+
+					</span>
+
+				</td>
+				<td>The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption..</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/seven.jpeg></img>
+					<span><b>Se7en (1995)</b>
+						directed by David Fincher
+
+						Crime , Drama , Mystery
+						2h 7min
+
+					</span>
+
+				</td>
+				<td>Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/silence-of-the-lambs.jpeg></img>
+					<span><b>The Silence of<br>the Lambs (1991)</b>
+						directed by Jonathan Demme
+
+						Crime , Drama , Thriller
+						1h 58min
+					</span>
+
+				</td>
+				<td>A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/full-metal-jacket.jpeg></img>
+					<span><b>Full Metal Jacket (1987)</b>
+						directed by Stanley Kubrick
+
+						Drama , War
+						1h 56min
+
+					</span>
+
+				</td>
+				<td>A pragmatic U.S. Marine observes the dehumanizing effects the Vietnam War has on his fellow recruits from their brutal boot camp training to the bloody street fighting in Hue.</td>
+			</tr>
+
+			<tr genre="romance">
+				<td>
+					<img src=img/movies/eternal-sunshine.jpeg></img>
+					<span><b>Eternal Sunshine of </b><br><b>the Spotless Mind (2004)</b>
+						directed by Michel Gondry
+
+						Drama , Romance , Sci-Fi
+						1h 48min
+					</span>
+
+				</td>
+				<td>When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/shutter-island.jpeg></img>
+					<span><b>Shutter Island (2010)</b>
+						directed by Martin Scorsese
+
+						Mystery , Thriller
+						2h 18min
+
+					</span>
+
+				</td>
+				<td>In 1954, a U.S. Marshal investigates the disappearance of a murderer, who escaped from a hospital for the criminally insane.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/into-the-wild.jpeg></img>
+					<span><b>Into the Wild (2007)</b>
+						directed by Sean Penn
+
+						Adventure , Biography , Drama
+						2h 28min
+
+					</span>
+
+				</td>
+				<td>After graduating from Emory University, top student and athlete Christopher McCandless abandons his possessions, gives his entire $24,000 savings account to charity and hitchhikes to Alaska to live in the wilderness. Along the way, Christopher encounters a series of characters that shape his life.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/the-social-network.jpeg></img>
+					<span><b>The Social Network (2010)</b>
+						directed by David Fincher
+
+						Biography , Drama
+						2h
+
+					</span>
+
+				</td>
+				<td>Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, but is later sued by two brothers who claimed he stole their idea, and the co-founder who was later squeezed out of the business.</td>
+			</tr>
+
+			<tr genre="dark">
+				<td>
+					<img src=img/movies/black-swan.jpeg></img>
+					<span><b>Black Swan (2010)</b>
+						directed by Darren Aronofsky
+
+						Drama , Thriller
+						1h 48min
+
+					</span>
+
+				</td>
+				<td>A committed dancer wins the lead role in a production of Tchaikovsky's "Swan Lake" only to find herself struggling to maintain her sanity.</td>
+			</tr>
+
+			<tr genre="romance">
+				<td>
+					<img src=img/movies/waking-life.jpeg></img>
+					<span><b>Waking Life (2001)</b>
+						directed by Richard Linklater
+
+						Animation , Drama , Fantasy
+						1h 39min
+
+					</span>
+
+				</td>
+				<td>A man shuffles through a dream meeting various people and discussing the meanings and purposes of the universe.</td>
+			</tr>
+
+			<tr genre="romance">
+				<td>
+					<img src=img/movies/her.jpeg></img>
+					<span><b>Her (2013)</b>
+						directed by  Spike Jonze
+
+						Drama , Romance , Sci-Fi
+						2h 6min
+
+					</span>
+
+				</td>
+				<td>In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/butterfly-effect.jpeg><img>
+					<span><b>The Butterfly Effect (2004)</b>
+						directed by Eric Bress,
+						J. Mackye Gruber
+
+						Sci-Fi , Thriller
+						1h 53min
+					</span>
+
+				</td>
+				<td>Evan Treborn suffers blackouts during significant events of his life. As he grows up, he finds a way to remember these lost memories and a supernatural way to alter his life by reading his journal.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/zodiac.jpeg></img>
+					<span><b>Zodiac (2007)</b>
+						directed by David Fincher
+
+						Crime , Drama , Mystery
+						2h 37min
+
+					</span>
+
+				</td>
+				<td>In the late 1960s/early 1970s, a San Francisco cartoonist becomes an amateur detective obsessed with tracking down the Zodiac Killer, an unidentified individual who terrorizes Northern California with a killing spree.</td>
+			</tr>
+
+			<tr genre="dark">
+				<td>
+					<img src=img/movies/jacobs-ladder.jpeg></img>
+					<span><b>Jacob's Ladder (1990)</b>
+						directed by Adrian Lyne
+
+						Drama , Horror , Mystery
+						1h 53min
+
+					</span>
+
+				</td>
+				<td>Mourning his dead child, a haunted Vietnam War veteran attempts to uncover his past while suffering from a severe case of dissociation. To do so, he must decipher reality and life from his own dreams, delusions, and perceptions of death.</td>
+			</tr>
+
+			<tr genre="dark">
+				<td>
+					<img src=img/movies/requim-for-a-dream.jpeg></img>
+					<span><b>Requiem for a Dream (2000)</b>
+						directed by Darren Aronofsky
+
+						Drama
+						1h 42min
+
+					</span>
+
+				</td>
+				<td>The drug-induced utopias of four Coney Island people are shattered when their addictions run deep.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/copycat.jpeg></img>
+					<span><b>Copycat (1995)</b>
+						directed by Jon Amiel
+
+						Drama , Mystery , Thriller
+						2h 3min
+
+					</span>
+
+				</td>
+				<td>An agoraphobic psychologist and a female detective must work together to take down a serial killer who copies serial killers from the past.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/split.jpeg></img>
+					<span><b>Split (2016)</b>
+						directed by M. Night Shyamalan
+
+						Horror , Thriller
+						1h 57min
+
+					</span>
+
+				</td>
+				<td>Three girls are kidnapped by a man with a diagnosed 23 distinct personalities. They must try to escape before the apparent emergence of a frightful new 24th.</td>
+			</tr>
+
+			<tr genre="drama">
+				<td>
+					<img src=img/movies/american-beauty.jpeg></img>
+					<span><b>American Beauty (1999)</b>
+						directed by Sam Mendes
+
+						Drama
+						2h 2min
+
+					</span>
+
+				</td>
+				<td>A sexually frustrated suburban father has a mid-life crisis after becoming infatuated with his daughter's best friend.</td>
+			</tr>
+
+		</table>
+	</div>
+
+	<!---- Security Pane ---->
+
+	<div id=coding-pane class=content-pane>
+		<!-- <div id=coding-sub-links class=sub-links>
+			<a href="#coding-all" value="all">All</a>
+			<a href="#coding-findings" value="findings">Findings</a>
+			<a href="#coding-writeups" value="writeups">Writeups</a>
+			<a href="#coding-other" value="other">Other</a>
+		</div> -->
+
+			<!-- <li cat=><a href=</a></li> -->
+			<ul>
+				<li><a href="articles/2021-02-25-bash-basics.html">[2021-02-25] Bash Basics</a></li>
+				<li><a href="articles/2020-07-19-linux-cheatsheets.html">[2020-07-19] Creating simple cheatsheets for command line tools</a></li>
+			</ul>
+	</div>
+
+
+	<div id=about-pane class=content-pane>This <i>was</i> a self-hosted site that I ran from my house using a bunch of raspberry Pi's. Things have changed, my new router doesn't have functional port-forwarding, and my raspberry Pi's were discovered on <a href="https://www.shodan.io/">Shodan</a>. Now I host it here, on Github pages! If you have any comments, concerns, or questions you can reach me at m.arg12@protonmail.com</div>
+
+</body>
+
+<footer>
+</footer>
+
+</html>

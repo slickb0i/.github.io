@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+	<link rel="stylesheet" href="../css/base.css"></link>
+	<link rel="stylesheet" href="../css/prism.css"></link>
+
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/base.js"></script>
+	<script src="../js/prism.js"></script>
+</head>
+
+<body class=post>
+	<h1 id="website-title"><a id=website-title href=../index.html>slickb0i</a></h1>
+
+	<h2>Bash Basics</h2>
+	<ul>
+		<li><a href="#introduction">Introduction</a></li>
+		<li><a href="#variables">Variables</a></li>
+		<li><a href="#exit-status">Exit Status</a></li>
+		<li><a href="#compound-commands">Compound Commands</a></li>
+		<ul>
+			<li><a href="#arithmetic">Arithmetic Expressions</a></li>
+			<li><a href="#conditional">Conditional Evaluation</a></li>
+		</ul>
+		<li><a href="#control-flow">Control Flow</a></li>
+		<li><a href="#conclusion">Conclusion</a></li>
+		<li><a href="#references">References</a></li>
+	</ul>
+
+	<h2 id="introduction">Introduction</h2>
+	<p>For any Linux user, using Bash or a similar scripting language is almost unavoidable. For many, it is one of the reasons why they switched to use Linux as their main OS. Through it we can automate tasks that are otherwise annoying or tedious to perform using a GUI. For this article the code examples are shown in a terminal, however we can always move these commands into a script with the header <code class="language-bash">#!/bin/bash</code>.For more information be sure to check the man pages (<code class="language-bash">man 1 bash</code>) and the <a href=#references>references</a> at the bottom. In fact, many of my references are from the man pages themselves ;)</p>
+
+	<h2 id="variables">Variables</h2>
+	<p>Variables are called 'parameters' in bash and are assigned using the <code class="language-bash">name=[value]</code> construct. Bash also supports one-dimensional arrays and indexed arrays (commonly known as dictionaries). To access the values of the variables we preceed the variable name using a '$' (which is known as parameter expansion<sup>[5]</sup>). We will learn more about expansion later, for now let's look at some examples.</p>
+	<pre><code class="language-bash">~ : # Simple variable assignment
+~ : myvar="foo"
+~ : echo "$myvar"
+foo
+
+~ : # Using braces help distinguish the variable name from other characters/digits
+~ : myvar="${myvar}bar"
+~ : echo "$myvar"
+foobar
+
+~ : # You may notice that every variable is surrounded using ""
+~ : # This prevents spacing issues that might occur after parameter expansion
+~ : myfile="Some space.mp3"
+~ : rm $myfile
+rm: cannot remove 'Some': No such file or directory
+rm: cannot remove 'space.mp3': No such file or directory</code></pre>
+	<p>In addition there are a number of special parameters<sup>[6]</sup> which are preset by bash. Assignment to these variables are not allowed. One that is especially useful is <code class="language-bash">$?</code> which stores the exit status of the most recently run foreground command. I won't go over arrays because, to be honest, I rarely use them. It is better to write your program in a different language if bash is becoming too complex and arrays seem to be that tipping point for me.</p>
+
+	<h2 id="exit-status">Exit Status</h2>
+	<p>The exit status of a command signifies to a user whether or not the previous command completed successfully. A return status of status of <b>zero</b> signifies success, while anything <b>non-zero</b> informs the user of a different result. Each command defines what it's exit status signifies and can typically be found by searching "EXIT STATUS" in the man pages.</p>
+	<pre><code class="language-bash"># Grep is an executable used to search for Patterns in a File
+# Basic command syntax is `grep PATTERNS FILE`
+~ : grep "hello" hello.txt
+hello world
+
+# We can check the status code to confirm that grep ran successfully
+~ : echo $?
+0
+
+# The man pages for grep tells us a return status of 1 signifies no match was found
+~ : grep "hooka shaka" hello.txt
+
+~ : echo $?
+1</code></pre>
+	<p>Lists are another powerful tool in Bash. A list is a sequence of one or more commands seperated by one of these operators <code class="language-bash">; & && ||</code>. We use them to control which commands are executed based on the <i>exit status</i> of previous commands.</p>
+	<pre><code class="language-bash"># Lets say we want to execute some command IF the previous command was SUCCESSFUL.
+# We could use the '&&' operator to accomplish this.
+# Let's unmount a USB before shutting down the system
+~ : umount /media/USB7807 && sudo shutdown -h now
+
+# We can use the '||' operator to execute a script IF the previous command was UNSUCCESSFUL
+# In my Bash scripts I use it as a way to stop the script if something goes wrong.
+# If I can't mount my external drive then I don't want to continue with my backup script.
+~ : sudo mount /media/external-drive || exit 1
+
+# The ';' operator is used to execute the second command regardless of the exit status of the previous command
+~ : touch tst.txt; mv tst.txt /home/slickb0i</code></pre>
+	<p>Since the <code class="language-bash">&</code> operator is a bit different I'll leave it at that for now.</p>
+
+	<h2 id="compound-commands">Compound Commands</h2>
+	<p>The two main types of compound commands in Bash are Conditional Expressions and Arithmetic Evaluation.</p>
+
+	<h3 id="arithmetic">Arithmetic Expressions</h3>
+	<p> Arithmetic Expressions are useful when dealing with integer values. We use the syntax ((<i>expression</i>)) to signify arithmetic evaluation. Lets looks at some cases of variable assignment.</p>
+	<pre><code class="language-bash">~ : ((i=1))
+~ : ((i=i+1))
+~ : echo $i
+2
+~ : ((++i))
+~ : echo $i
+3</code></pre>
+	<p>Notice that we don't need to use variable expansion ($i) when manipulating the value of i. In fact, if we tried to do something like <code class="language-bash">(($i=4))</code> we would get an error. We need an <i>lvalue</i> to perform assignment, somewhere to store the value (i) rather than its' current value($i).</p>
+
+	<p>We can also make comparisons using arithmetic expressions.</p>
+	<pre><code class="language-bash">~ : ((i=4))
+
+# Let's leverage lists and exit status to perform a check.
+# Remember that the command && is only evaluated if the exit status of the first command is zero
+~ : ((i % 2 == 0)) && echo "Divisible by two"
+Divisible by two
+
+# Greater than comparison
+~ : ((i > 0)) && echo "The variable i is greater than zero"
+The variable i is greater than zero
+
+# We can also use && or || within an arithmetic expressions
+~ : ((i % 2 == 0 || ++i)); echo "If i was odd, it ain't anymore"
+If i was odd, it ain't anymore</code></pre>
+	<p>More assignment operators can be found here<sup>[3]</sup>.</p>
+
+	<h3 id="conditional">Conditional Expressions</h3>
+	<p>Conditional expressions are similar to arithmetic except we do not use them for variable assignment. Instead, they are typically used to preform some sort of check and we can spot them with the format [[<i>expression</i>]].</p>
+	<pre><code class="language-bash">~ : if [[ -e "~/.bashrc" ]]; then
+	echo "File exists!"
+else
+	echo "File doesn't exits :("
+fi
+File exists!
+
+~ : i="hello"
+~ : [[ -v i ]] && echo "Variable has been created!"
+Variable has been created!
+
+# We can also use conditional to test string values
+~ : [[ "$i" != "help" ]] && echo "You don't need help"
+You don't need help</code></pre>
+	<p>More conditional operators can be found here<sup>[4]</sup>.</p>
+
+	<h2 id="control-flow">Control Flow</h2>
+	<p>We can control the execution path of our program using control flow statements. In general, control flow statements test a condition and take a path according the result of that test. As we saw above with compound commands, we can test a variety of things such as whether a variable equals a certain value or whether a file exists.</p>
+	<pre><code class="language-bash"># Lets look at a simple variable test
+myvar="yes"
+if [[ "$myvar" == "yes" ]]; then
+	echo "Variable equals yes!"
+fi
+
+# The above example is pretty straight forward. We could even take out the
+# if statement altogether and use the logical operator &&. However if statements
+# can do some more complex things as well
+if [[ "$myvar" == "1" ]]; then
+	echo "if clause"
+elif [[ "$myvar" == "2" ]]; then
+	echo "elif clause"
+else;
+	echo "else clause"
+fi
+
+# Lets look at some loops now because those are interesting as well
+# A simple while loop to output numbers from 0 to 4
+i=0
+while (( i != 5 )); do
+ 	echo "$i"
+	((i++))
+done
+
+# Standard for loop you have seen in C and C++ code, except using bash constructs
+for (( i=0; i!=5; i++ )); do
+ 	echo "$i"
+done
+
+# We can also iterate through words in a list. File is assigned every value in word.
+# Notice what will happen if our filenames have spaces!
+for file in $(ls); do
+	echo $file
+done</code></pre>
+	<p>The proper way to do that last command can be found here<sup>[6]</sup> </p>
+
+	<h2 id="conclusion">Conclusion</h2>
+	<p>I hope this has given you a general idea of how to write some small scripts in Bash. As you get more comfortable with the language you will be able to do more complex things such as backing up a system or installing an operating system from scratch. The more you automate, the more time you save and the less mistakes you make.</p>
+
+	<h2 id="references">References</h2>
+	<ol>
+		<li>https://man7.org/linux/man-pages/man1/bash.1.html</li>
+		<li>http://mywiki.wooledge.org/BashGuide</li>
+		<li>https://man7.org/linux/man-pages/man1/bash.1.html#ARITHMETIC_EVALUATION</li>
+		<li>https://man7.org/linux/man-pages/man1/bash.1.html#CONDITIONAL_EXPRESSIONS</li>
+		<li>https://man7.org/linux/man-pages/man1/bash.1.html#EXPANSION</li>
+		<li>http://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29</li>
+	</ol>
+
+</body>
+<footer></footer>
+</html>

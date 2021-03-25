@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+	<link rel="stylesheet" href="../css/base.css"></link>
+	<link rel="stylesheet" href="../css/prism.css"></link>
+
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/base.js"></script>
+	<script src="../js/prism.js"></script>
+</head>
+
+<body>
+	<h1 id="website-title"><a id=website-title href=../index.html>slomo</a></h1>
+	<form>
+		<h3>Enter root hash to access writeup:</h3>
+		<input id=hash-input type="text" style="width: 300px;"/>
+		<button id=hash-button>Submit</button>
+	</form>
+</form>
+</body>
+
+<script type="text/javascript">
+
+	function executeIfExists(url) {
+		var xhr = new XMLHttpRequest()
+		xhr.open("HEAD", url, true);
+		xhr.onreadystatechange = function () {
+		  if(xhr.readyState === XMLHttpRequest.DONE) {
+		    var status = xhr.status;
+		    if (status === 0 || (status >= 200 && status < 400)) {
+		      window.location.href = url;
+		    }
+		  }
+		};
+		xhr.send();
+	}
+
+	function submitHash() {
+		var hash = document.getElementById("hash-input").value;
+		var loc = window.location.pathname;
+		var dir = loc.substring(0, loc.lastIndexOf('/'));
+		var url = dir + "/writeups/" + hash + ".html";
+
+		executeIfExists(url);
+	}
+
+	document.getElementById("hash-button").addEventListener("click", submitHash);
+</script>
+
+</html>

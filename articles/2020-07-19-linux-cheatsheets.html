@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<head>
+	<link rel="stylesheet" href="../css/base.css"></link>
+	<link rel="stylesheet" href="../css/prism.css"></link>
+
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/base.js"></script>
+	<script src="../js/prism.js"></script>
+</head>
+
+<body class=short-post>
+	<h1 id="website-title"><a id=website-title href=../index.html>slickb0i</a></h1>
+  <h2>Overview</h2>
+  <p>It's pretty convienient to maintain cheatsheets for the various CLI tools you use on a daily basis. While it's probably better in general to reference the man pages, some tools are pretty low risk and so you might not want all the fine details. A good example is the "tar" tool, which seems to need atleast 3-4 flags to successfully unarchive a tar file.</p>
+  <h2>Existing Solutions</h2>
+  <p>A <a href="http://cheat.sh/">pretty neat project</a> already accomodates this needs. It uses the curl command to pull a cheatsheet hosted on the web. An example execution is shown here:</p>
+  <pre><code class="language-bash">~ : curl cheat.sh/tar
+# tar
+# Archiving utility.
+# Often combined with a compression method, such as gzip or bzip.
+# More information: <https://www.gnu.org/software/tar>.
+
+# Create an archive from files:
+tar cf target.tar file1 file2 file3
+
+# Create a gzipped archive:
+tar czf target.tar.gz file1 file2 file3
+
+# Create a gzipped archive from a directory using relative paths:
+tar czf target.tar.gz -C path/to/directory .
+... </code></pre>
+  <p>There is also <a href="https://linoxide.com/linux-how-to/create-view-interactive-cheatsheets-command-line/">this other tool</a> which I found in the process of writing this article. I haven't used it but it looks pretty good as well</p>
+
+  <h2>Customized solution</h2>
+  <p>I created some simple bash functions that would access my cheatsheets in a specified directory. Each of these cheatsheets would be a simple text file with minimal formatting similar to cheat.sh above.</p>
+  <h3>Step 1</h3>
+  <p>Create a directory where you want your cheatsheets to be stored. In my case, these files are in a git repository alongside config files and other scripts pertaining to my system. Using git simply allows for quicker setup on a new system.</p>
+  <h3>Step 2</h3>
+  <p>Add the functions which provide a simple command line interface. In my case I'm using zsh, so I'll be adding this to my <i>~/.zshrc</i> file, but it your case it may be <i>~/.bashrc</i> or whatever config corresponds to the shell you use. Notice that im using vim to edit my cheatsheets.</p>
+  <pre><code class="language-bash"># User functions
+function cheat {
+        if [ "$1" = "-l" ]; then
+                ls ~/linux-things/cheatsheets/
+        elif [ "$1" = "-e" ]; then
+                vim ~/linux-things/cheatsheets/$2
+        else
+                cat ~/linux-things/cheatsheets/$1
+        fi
+}</code></pre>
+  <p></p>
+  <h3>Step 3</h3>
+  <p>Reload (source) the changed file, or open a new terminal. Here's an example usage (-e edits or creates a cheatsheet if it doesn't exist):
+  <pre><code class="language-bash">~ : cheat -l
+apt   gdb          git  ida       irssi  mount   powershell  radare  tmux  wireshark
+bash  gdb-indepth  gpg  iptables  linux  pacman  ps          tar     vim   zip
+
+~ : cheat tar
+--- tar files ---
+tar xvzf [file].tar.gz 	    	# Decompress and extract archive
+tar xvjf [file].tar.bzip2	    # Decompress and extract archive
+tar -cf [archive].tar [files]	# Compress
+
+~ : cheat -e find</code></pre>
+  <h2>Conclusion</h2>
+  <p>So far these cheatsheets have worked well for me, allowing for the customization that I want. In the future I might add some improvements in accessing the cheatsheets.</p>
+</body>
+<footer></footer>
+</html>
